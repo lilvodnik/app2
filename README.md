@@ -34,13 +34,10 @@ npm или yarn
 ## Инструкции по запуску
 1. Клонируйте репозиторий:
 
-```bash
-git clone https://github.com/lilvodnik/app2.git
-cd app2```
+```bash git clone https://github.com/lilvodnik/app2.git cd app2```
 2. Установите зависимости для бэкенда:
 
-```bash
-cd backend
+```bash cd backend
 npm install```
 3. Установите зависимости для фронтенда:
 
