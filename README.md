@@ -32,26 +32,28 @@ Node.js (версия 14 или выше)
 npm или yarn
 
 ## Инструкции по запуску
-1. Клонируйте репозиторий:
+```1. Клонируйте репозиторий:
 
-```bash git clone https://github.com/lilvodnik/app2.git cd app2```
+bash 
+git clone https://github.com/lilvodnik/app2.git
+cd app2
 2. Установите зависимости для бэкенда:
 
-```bash cd backend
-npm install```
+bash cd backend
+npm install
 3. Установите зависимости для фронтенда:
 
-```bash
+bash
 cd ../frontend
-npm install```
+npm install
 4. Запустите бэкенд (из папки backend):
 
-```bash
-npm start```
+bash
+npm start
 5. Запустите фронтенд (из папки frontend):
 
-```bash
-npm start```
+bash
+npm start
 ### Использование
 Откройте http://localhost:3000 в браузере
 
