@@ -1,0 +1,62 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>аутентификация</title>
+    <link id="themeStylesheet" rel="stylesheet" href="light-theme.css">
+</head>
+<body>
+    <h1>аутентификация</h1>
+    
+    <form id="registerForm">
+        <h2>регистрация</h2>
+        <input type="text" name="username" placeholder="имя" required>
+        <input type="password" name="password" placeholder="пароль" required>
+        <button type="submit">регистрация</button>
+    </form>
+    
+    <form id="loginForm">
+        <h2>вход</h2>
+        <input type="text" name="username" placeholder="имя" required>
+        <input type="password" name="password" placeholder="пароль" required>
+        <button type="submit">вход</button>
+    </form>
+
+    <button id="profileButton"><a href="profile.html">показать профиль</a></button>
+
+    <script>
+        document.getElementById('registerForm').onsubmit = async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            const response = await fetch('/register', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify(data) 
+            });
+            const message = await response.text();
+            alert(message);
+        };
+
+        document.getElementById('loginForm').onsubmit = async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            const response = await fetch('/login', { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify(data) 
+            });
+            const message = await response.text();
+            alert(message);
+        };
+
+        document.getElementById('profileButton').onclick = async function () {
+            const response = await fetch('/profile');
+            const message = await response.text();
+            alert(message);
+        };
+    </script>
+</body>
+</html>

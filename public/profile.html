@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>профиль</title>
+    <link id="themeStylesheet" rel="stylesheet" href="light-theme.css"> 
+</head>
+<body>
+    <h1>профиль</h1>
+    <button id="toggleTheme">Сменить тему</button> 
+    <h2>Данные</h2>
+    <button id="loadDataButton">Обновить данные</button>
+    <pre id="dataDisplay"></pre>
+    <h3 id="lastUpdatedDisplay"></h3> 
+    <button id="logoutButton">Выход</button>
+
+    <script>
+        const themeStylesheet = document.getElementById('themeStylesheet');
+        const savedTheme = localStorage.getItem('theme') || 'light-theme.css';
+        themeStylesheet.setAttribute('href', savedTheme);
+
+
+        document.getElementById('toggleTheme').onclick = function () {
+            const currentTheme = themeStylesheet.getAttribute('href');
+            const newTheme = currentTheme === 'light-theme.css' ? 'dark-theme.css' : 'light-theme.css';
+            themeStylesheet.setAttribute('href', newTheme);
+            localStorage.setItem('theme', newTheme); 
+        };
+
+        document.getElementById('loadDataButton').onclick = async function () {
+            const response = await fetch('/data-file');
+            const data = await response.json();
+            document.getElementById('dataDisplay').textContent = JSON.stringify(data, null, 2);
+            document.getElementById('lastUpdatedDisplay').textContent = 'Последнее обновление: ' + data.lastUpdated; 
+        };
+
+        document.getElementById('logoutButton').onclick = async function () {
+            const response = await fetch('/logout', { method: 'POST' });
+            const message = await response.text();
+            alert(message);
+            window.location.href = '/'; 
+        };
+    </script>
+</body>
+</html>
