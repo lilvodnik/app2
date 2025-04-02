@@ -32,7 +32,8 @@ Node.js (версия 14 или выше)
 npm или yarn
 
 ## Инструкции по запуску
-```1. Клонируйте репозиторий:
+```
+1. Клонируйте репозиторий:
 
 bash 
 git clone https://github.com/lilvodnik/app2.git
